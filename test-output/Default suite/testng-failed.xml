@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="Loadtime.Loadtime">
+        <methods>
+          <include name="launchBrowser"/>
+          <include name="closeBrowser"/>
+          <include name="urlLogin"/>
+        </methods>
+      </class> <!-- Loadtime.Loadtime -->
+      <class name="Loadtime.NewTest">
+        <methods>
+          <include name="urlLogin"/>
+          <include name="launchBrowser"/>
+          <include name="closeBrowser"/>
+        </methods>
+      </class> <!-- Loadtime.NewTest -->
+      <class name="Loadtime.TestNg2">
+        <methods>
+          <include name="testgooglrsearch"/>
+        </methods>
+      </class> <!-- Loadtime.TestNg2 -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

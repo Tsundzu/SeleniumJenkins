@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Loadtime]">
+  <test thread-count="5" name="DeploymentTest(failed)">
+    <classes>
+      <class name="Loadtime.Loadtime">
+        <methods>
+          <include name="launchBrowser"/>
+          <include name="closeBrowser"/>
+          <include name="urlLogin"/>
+        </methods>
+      </class> <!-- Loadtime.Loadtime -->
+    </classes>
+  </test> <!-- DeploymentTest(failed) -->
+</suite> <!-- Failed suite [Loadtime] -->
