@@ -20,7 +20,7 @@ public class Loadtime {
   
   @BeforeTest
   public void launchBrowser() {
-      System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, System.getProperty("user.home") + File.separator + "AppData" + File.separator + "chromedriver_win32" + File.separator + "chromedriver.exe");
+      System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY,"C:" + File.separator + "Users" + File.separator + "Tsu" + File.separator + "Desktop" + File.separator + "Files" + File.separator + "chromedriver_win32" + File.separator + "chromedriver.exe");
       driver = new ChromeDriver();
   }	
 
