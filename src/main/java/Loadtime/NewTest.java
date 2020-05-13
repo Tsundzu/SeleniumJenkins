@@ -20,7 +20,8 @@ public class NewTest {
   
   @BeforeTest
   public void launchBrowser() {
-      System.setProperty("webdriver.chrome.driver", System.getProperty("user.home") + File.separator + "Desktop" + File.separator + "Files" + File.separator + "chromedriver_win32" + File.separator + "chromedriver.exe");
+     // System.setProperty("webdriver.chrome.driver", System.getProperty("user.home") + File.separator + "Desktop" + File.separator + "Files" + File.separator + "chromedriver_win32" + File.separator + "chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver",System.getProperty("user.home") + File.separator + "AppData" + File.separator + "chromedriver_win32" + File.separator + "chromedriver.exe" ); 
       driver = new ChromeDriver();
       driver.get("www.google.com");
   }	
