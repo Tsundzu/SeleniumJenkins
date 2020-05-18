@@ -3,13 +3,6 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Loadtime.Loadtime">
-        <methods>
-          <include name="launchBrowser"/>
-          <include name="closeBrowser"/>
-          <include name="urlLogin"/>
-        </methods>
-      </class> <!-- Loadtime.Loadtime -->
       <class name="Loadtime.NewTest">
         <methods>
           <include name="urlLogin"/>
@@ -17,11 +10,11 @@
           <include name="closeBrowser"/>
         </methods>
       </class> <!-- Loadtime.NewTest -->
-      <class name="Loadtime.TestNg2">
+      <class name="Loadtime.Loadtime">
         <methods>
-          <include name="testgooglrsearch"/>
+          <include name="main"/>
         </methods>
-      </class> <!-- Loadtime.TestNg2 -->
+      </class> <!-- Loadtime.Loadtime -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

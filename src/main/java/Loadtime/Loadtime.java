@@ -1,37 +1,59 @@
 package Loadtime;
 
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Test;
 
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.AfterTest;
+import java.net.URL;
+import io.restassured.RestAssured;
+import java.net.MalformedURLException;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.File;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.*;
-
+@Test
 public class Loadtime {
 	
-  String driverPath = "";
-  public String baseUrl = "{name_of_env}apps.telkom.co.za/{name_of_application}";
-  public WebDriver driver;
+  public static int httpResponseCode(String url) {
+	      return RestAssured.get(url).statusCode();
+	}	
+
+  static Capabilities chromeCapabilities = DesiredCapabilities.chrome();
+  static Capabilities firefoxCapabilities = DesiredCapabilities.firefox();
   
-  @BeforeTest
-  public void launchBrowser() {
-      System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY,"C:" + File.separator + "Users" + File.separator + "Tsu" + File.separator + "Desktop" + File.separator + "Files" + File.separator + "chromedriver_win32" + File.separator + "chromedriver.exe");
-      driver = new ChromeDriver();
-  }	
 
-  @Test
-  public void urlLogin() {
-	  driver.get("https://www.google.com/");
+  public static void main() {
+   RemoteWebDriver chrome = null;
+   RemoteWebDriver firefox = null;
+   String URL = "http://ecdev01apps.telkom.co.za/access-manager";
+   
+   int responsecode = 0;
+   responsecode = httpResponseCode(URL);
+   
+   //Testing against chrome browser
+	try {
+		chrome = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeCapabilities);
+	} catch (MalformedURLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+    //Testing against firefox
+	try {
+		firefox = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxCapabilities);
+	} catch (MalformedURLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+    // run against chrome
+    chrome.get(URL);
+    System.out.println(chrome.getTitle());
+    System.out.println("HTTP Code: " + responsecode);
+
+    // run against firefox
+    firefox.get(URL);
+    System.out.println(firefox.getTitle());
+    System.out.println("HTTP Code: " + responsecode);
+  
+    chrome.quit();
+    firefox.quit();
   }
-
-  @AfterTest
-  public void closeBrowser() {
-	  driver.quit();
-  }
-
 }
