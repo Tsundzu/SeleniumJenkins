@@ -1,69 +1,100 @@
 package Loadtime;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
+
+
 import org.testng.annotations.Test;
 
 import java.net.URL;
 import io.restassured.RestAssured;
 
-import java.io.IOException;
+import java.io.File;
 import java.net.MalformedURLException;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import org.xml.sax.Attributes;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
 
 @Test
-public class Loadtime {
+public class Loadtime extends DefaultHandler {
   static Capabilities chromeCapabilities = DesiredCapabilities.chrome();
   static Capabilities firefoxCapabilities = DesiredCapabilities.firefox();
-	  
+  static String URL = "http://ecdev01apps.telkom.co.za/access-manager";
+  //static String URL;
+
+  
   //Response code method, returns an integer.
   public static int httpResponseCode(String url) {
 	      return RestAssured.get(url).statusCode();
 	}	
   
-  //Reading xml value to return the url value from Jenkins
-  public static String getUrl() {
-	  
-	  String xmlFile = "employees.xml";
-	  DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
-      try {
-          DocumentBuilder builder = domFactory.newDocumentBuilder();
-          Document dDoc = builder.parse("C:\\Program Files (x86)\\Jenkins\\jobs\\TestNg\\config.xml");
-
-          XPath xPath = XPathFactory.newInstance().newXPath();
-          Node node = (Node) xPath.evaluate("project/description", dDoc, XPathConstants.NODE);
-          System.out.println(node.getNodeValue());
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-	return null;
-	  
-  }
-
   
+  /*@Test(enabled = false)
+  public static void setUrl(String url) {
+	  URL = url;
+  }
+  */
+  
+  public static String getUrl() {return URL;}
 
   public static void main() {
 	  
    RemoteWebDriver chrome = null;
    RemoteWebDriver firefox = null;
-   String URL = "http://ecdev01apps.telkom.co.za/access-manager";
    
    int responsecode = 0;
-   responsecode = httpResponseCode(URL);
+
+ //Reading xml file to return the url value from Jenkins
+   try {
+		  
+		  File f = new File("C://Program Files (x86)//Jenkins//jobs//TestNg//config.xml");
+		  SAXParserFactory fact = SAXParserFactory.newInstance();
+		  SAXParser parser = fact.newSAXParser();
+		  
+		  DefaultHandler handler =  new DefaultHandler() {
+			  boolean desc = false;
+			  public void startElement(String uri, String localName, String qName,
+					  Attributes attr) throws SAXException{
+				
+				if(qName.equals("description")) {
+					String value = attr.getValue(qName);
+					System.out.println("Description: " + value);
+					desc = true;
+				}
+					
+			  }
+			  
+			  public void endElement(String uri, String localName, String qName) {
+				  
+				  if(qName.equals("description")) {
+					  //System.out.println("Description: " + qName);
+					  desc = false;
+				  } 
+			  }
+			  
+			  
+			  public  void characters(char[] ch, int start, int length) throws SAXException
+			  {
+				  
+				  if(desc) {
+					  System.out.println("description is : " + new String(ch,start, length));
+					  desc = false;
+				  }
+				  
+			  }
+		  };
+		  
+		  parser.parse(f, handler);
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
    
    //Testing against chrome browser
 	try {
@@ -79,6 +110,8 @@ public class Loadtime {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	
+    responsecode = httpResponseCode(URL);
 
     // run against chrome
     chrome.get(URL);
