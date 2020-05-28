@@ -101,7 +101,7 @@ public class Loadtime extends DefaultHandler {
 					  
 					  // run against firefox
 					  firefox.get(new String(ch,start, length));
-					  System.out.println("Page tittle: " + firefox.getTitle());
+					  System.out.println("Firefox Page tittle: " + firefox.getTitle());
 					  
 					  //get http response code
 					  responsecode = httpResponseCode(new String(ch,start, length));
