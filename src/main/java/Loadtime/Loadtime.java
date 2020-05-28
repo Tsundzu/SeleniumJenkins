@@ -93,15 +93,19 @@ public class Loadtime extends DefaultHandler {
 					  
 					  // run against chrome
 					  chrome.get(new String(ch,start, length));
-					  System.out.println(chrome.getTitle());
+					  System.out.println("Page tittle: " + chrome.getTitle());
+					  
+					//get http response code
+					  responsecode = httpResponseCode(new String(ch,start, length));
+					  System.out.println("HTTP Status Code: " + responsecode);
 					  
 					  // run against firefox
 					  firefox.get(new String(ch,start, length));
-					  System.out.println(firefox.getTitle());
+					  System.out.println("Page tittle: " + firefox.getTitle());
 					  
 					  //get http response code
 					  responsecode = httpResponseCode(new String(ch,start, length));
-					  System.out.println("HTTP Code: " + responsecode);
+					  System.out.println("HTTP Status Code: " + responsecode);
 					  
 					  //close both browsers
 					  chrome.quit();
