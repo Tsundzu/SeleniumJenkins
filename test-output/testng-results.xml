@@ -2,16 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="27994" started-at="2020-05-18T11:59:12Z" finished-at="2020-05-18T11:59:40Z">
+  <suite name="Default suite" duration-ms="94141" started-at="2020-08-19T11:33:33Z" finished-at="2020-08-19T11:35:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="27994" started-at="2020-05-18T11:59:12Z" finished-at="2020-05-18T11:59:40Z">
-      <class name="Loadtime.Loadtime">
-        <test-method status="PASS" signature="main()[pri:0, instance:Loadtime.Loadtime@343f4d3d]" name="main" duration-ms="27933" started-at="2020-05-18T11:59:12Z" finished-at="2020-05-18T11:59:40Z">
+    <test name="Default test" duration-ms="94141" started-at="2020-08-19T11:33:33Z" finished-at="2020-08-19T11:35:07Z">
+      <class name="selenium.NewTest">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:selenium.NewTest@589838eb]" name="beforeTest" is-config="true" duration-ms="54277" started-at="2020-08-19T11:33:33Z" finished-at="2020-08-19T11:34:27Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- main -->
-      </class> <!-- Loadtime.Loadtime -->
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="seleniumTest()[pri:0, instance:selenium.NewTest@589838eb]" name="seleniumTest" duration-ms="44" started-at="2020-08-19T11:34:27Z" finished-at="2020-08-19T11:34:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- seleniumTest -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:selenium.NewTest@589838eb]" name="afterTest" is-config="true" duration-ms="39704" started-at="2020-08-19T11:34:27Z" finished-at="2020-08-19T11:35:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- selenium.NewTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

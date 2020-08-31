@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 10.745 s <<< FAILURE! - in TestSuite
+selenium.NewTest.beforeTest  Time elapsed: 10.104 s  <<< FAILURE!
+org.openqa.selenium.remote.UnreachableBrowserException: 
+Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.
+Build info: version: '3.141.0', revision: '2ecb7d9a', time: '2018-10-31T20:09:30'
+System info: host: 'DESKTOP-337E0VV', ip: '10.254.116.185', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_192'
+Driver info: driver.version: RemoteWebDriver
+	at selenium.NewTest.beforeTest(NewTest.java:122)
+Caused by: java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:4444
+	at selenium.NewTest.beforeTest(NewTest.java:122)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at selenium.NewTest.beforeTest(NewTest.java:122)
+

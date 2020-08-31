@@ -51,7 +51,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
   </dependencies>
   
   <build>
-  	<finalName>Loadtime</finalName>
+  	<finalName>SeleniumTest</finalName>
   	<plugins>
   		<plugin>
 		  <groupId>org.apache.maven.plugins</groupId>
@@ -60,8 +60,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 		  <configuration>
 		  	<fork>true</fork>
 		  	<executable>C:\Program Files\Java\jdk1.8.0_192\bin\javac.exe</executable>
-		  	<source>1.7</source>
-		  	<target>1.7</target>
+		  	<source>1.8</source>
+		  	<target>1.8</target>
 		  </configuration>
 		</plugin>
 		<plugin>
@@ -70,7 +70,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
         <version>3.0.0-M4</version>
         <configuration>
           <includes>
-            <include>Loadtime.java</include>
+            <include>NewTest.java</include>
           </includes>
           <suiteXmlFiles>
             <suiteXmlFile>C:\Users\Tsu\eclipse-workspace\LoadTime\testng.xml</suiteXmlFile>
@@ -78,7 +78,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
           <!-- TestNG test can accept parameters with the @Parameters annotation-->
           <systemPropertyVariables>
             <propertyName>firefox</propertyName>
+            <jenkins.buildUrl>${env.BUILD_URL}</jenkins.buildUrl>
+            <jenkins.buildNumber>${env.BUILD_NUMBER</jenkins.buildNumber>
           </systemPropertyVariables>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
         </configuration>
       </plugin>
       
@@ -87,15 +90,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-jar-plugin</artifactId>
       <version>3.1.0</version>
-      <configuration>
-        <archive>
-          <manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>Loadtime.Loadtime</mainClass>
-          </manifest>
-        </archive>
-      </configuration>
     </plugin>
       
       <plugin>

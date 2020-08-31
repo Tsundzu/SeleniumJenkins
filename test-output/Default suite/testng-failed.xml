@@ -3,18 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Loadtime.NewTest">
+      <class name="selenium.NewTest">
         <methods>
-          <include name="urlLogin"/>
-          <include name="launchBrowser"/>
-          <include name="closeBrowser"/>
+          <include name="beforeTest"/>
+          <include name="afterTest"/>
+          <include name="seleniumTest"/>
         </methods>
-      </class> <!-- Loadtime.NewTest -->
-      <class name="Loadtime.Loadtime">
-        <methods>
-          <include name="main"/>
-        </methods>
-      </class> <!-- Loadtime.Loadtime -->
+      </class> <!-- selenium.NewTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

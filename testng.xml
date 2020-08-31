@@ -2,10 +2,10 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Loadtime">
-	<test name="DeploymentTest">
+<suite name="Selenium Test">
+	<test name="BrowserTest">
 	<classes>
-	<class name="Loadtime.Loadtime"/>
+	<class name="selenium.NewTest"/>
 	</classes>
 	</test>
 </suite>	
