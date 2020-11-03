@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>Loadtime</groupId>
+  <artifactId>Loadtime</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>        
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ </properties>
+  <repositories>
+  <repository>
+    <id>jcenter</id>
+    <name>bintray</name>
+    <url>https://jcenter.bintray.com</url>
+  </repository>
+</repositories>
+  <dependencies>
+  
+    <dependency>				
+         <groupId>org.testng</groupId>								
+         <artifactId>testng</artifactId>								
+         <version>7.1.0</version>								
+         <scope>compile</scope>							  			
+    </dependency>
+  	<dependency>				
+             <groupId>junit</groupId>								
+             <artifactId>junit</artifactId>								
+             <version>3.8.1</version>								
+             <scope>test</scope>
+    </dependency>
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-java</artifactId>
+	    <version>3.141.0</version>
+	</dependency>		
+	
+	  <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>4.1.1</version>
+  </dependency>
+     
+  </dependencies>
+  
+  <build>
+  	<finalName>SeleniumTest</finalName>
+  	<plugins>
+  		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-compiler-plugin</artifactId>
+		  <version>3.8.1</version>
+		  <configuration>
+		  	<fork>true</fork>
+		  	<executable>C:\Program Files\Java\jdk1.8.0_192\bin\javac.exe</executable>
+		  	<source>1.8</source>
+		  	<target>1.8</target>
+		  </configuration>
+		</plugin>
+		<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M4</version>
+        <configuration>
+          <includes>
+            <include>NewTest.java</include>
+          </includes>
+          <suiteXmlFiles>
+            <suiteXmlFile>C:\Users\Tsu\eclipse-workspace\LoadTime\testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+          <!-- TestNG test can accept parameters with the @Parameters annotation-->
+          <systemPropertyVariables>
+            <propertyName>firefox</propertyName>
+          </systemPropertyVariables>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+      <!-- Build an executable JAR -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.1.0</version>
+    </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      
+		<plugin>
+			<groupId>org.apache-extras.beanshell</groupId>
+			<artifactId>bsh</artifactId>
+			<version>2.0b6</version>
+		</plugin>
+  	</plugins>
+  	
+  </build>
+</project>

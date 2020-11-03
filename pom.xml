@@ -58,8 +58,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
 		  <artifactId>maven-compiler-plugin</artifactId>
 		  <version>3.8.1</version>
 		  <configuration>
-		  	<fork>true</fork>
-		  	<executable>C:\Program Files\Java\jdk1.8.0_192\bin\javac.exe</executable>
 		  	<source>1.8</source>
 		  	<target>1.8</target>
 		  </configuration>
@@ -73,13 +71,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
             <include>NewTest.java</include>
           </includes>
           <suiteXmlFiles>
-            <suiteXmlFile>C:\Users\Tsu\eclipse-workspace\LoadTime\testng.xml</suiteXmlFile>
+            <suiteXmlFile>/usr/local/service/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
           <!-- TestNG test can accept parameters with the @Parameters annotation-->
           <systemPropertyVariables>
             <propertyName>firefox</propertyName>
-            <jenkins.buildUrl>${env.BUILD_URL}</jenkins.buildUrl>
-            <jenkins.buildNumber>${env.BUILD_NUMBER</jenkins.buildNumber>
           </systemPropertyVariables>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
         </configuration>
