@@ -5,4 +5,4 @@ COPY pom.xml /usr/local/service/pom.xml
 COPY testng.xml /usr/local/service/testng.xml
 COPY src /usr/local/service/src
 WORKDIR /usr/local/service/
-CMD mvn clean install
+CMD mvn clean test

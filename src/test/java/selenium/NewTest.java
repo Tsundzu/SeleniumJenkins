@@ -55,7 +55,7 @@ public class NewTest extends DefaultHandler {
 	 String version;
 	 try {
 		 //Checking the page title
-		 Assert.assertEquals("Telkom SA SOC Limited", pageTitle);
+		// Assert.assertEquals("Telkom SA SOC Limited", pageTitle);
 		 chrome.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		 chrome.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		 chrome.findElementByXPath("//font").click();
@@ -80,14 +80,14 @@ public class NewTest extends DefaultHandler {
 	//create remote chrome driver to connect to browser on the url
 		try {
 			chromeCapabilities.setBinary(new File(""));
-			chrome = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), chromeCapabilities);
+			chrome = new RemoteWebDriver(new URL("http://bdlh-ep-sand01.telkom.co.za:4444/wd/hub"), chromeCapabilities);
 		} catch (MalformedURLException e1) {
 			
 			e1.printStackTrace();
 		}
 		//create remote firefox driver to connect to browser on the url
 		try {
-			firefox = new RemoteWebDriver(new URL("http://127.0.0.1:4444/wd/hub"), firefoxCapabilities);
+			firefox = new RemoteWebDriver(new URL("http://bdlh-ep-sand01.telkom.co.za:4444/wd/hub"), firefoxCapabilities);
 		} catch (MalformedURLException e) {
 			
 			e.printStackTrace();
