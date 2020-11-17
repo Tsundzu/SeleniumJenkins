@@ -5,5 +5,4 @@ COPY pom.xml /usr/local/service/pom.xml
 COPY testng.xml /usr/local/service/testng.xml
 COPY src /usr/local/service/src
 WORKDIR /usr/local/service/
-RUN mvn clean test
-CMD echo "Running Selenium Test"
+CMD mvn clean install

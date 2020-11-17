@@ -2,18 +2,18 @@ package selenium;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-
-
-
-
 import org.testng.annotations.Test;
 
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 import io.restassured.RestAssured;
-import junit.framework.Assert;
+import org.testng.Assert;
 
 import java.io.File;
 import java.net.MalformedURLException;
+
+import org.openqa.selenium.By;
 //import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -51,10 +51,21 @@ public class NewTest extends DefaultHandler {
   //TestNG test method
   @Test
   public void seleniumTest() {
-	  String pageTitle = chrome.getTitle();
+	 String pageTitle = chrome.getTitle();
+	 String version;
 	 try {
 		 //Checking the page title
-		 Assert.assertEquals("Telkom", pageTitle);
+		 Assert.assertEquals("Telkom SA SOC Limited", pageTitle);
+		 chrome.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		 chrome.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 chrome.findElementByXPath("//font").click();
+		 //get the app version
+		 version = chrome.findElementByXPath("//p[2]").getText();
+		 Reporter.log(version);
+		 //Open the next page
+		 chrome.findElement(By.id("nextTarget")).click();
+		 
+		 
 		 
 	 } catch(Exception ex) {
 		 //Following will be preinted when the test fails
@@ -118,24 +129,24 @@ public class NewTest extends DefaultHandler {
 						  
 						  // run against Chrome
 						  chrome.get(new String(ch,start, length));
-						  //System.out.println("Chrome Browser: " + chrome.getTitle());
+						  System.out.println("Chrome Browser: " + chrome.getTitle());
 						  Reporter.log("Chrome Browser: " + chrome.getTitle());
 						  
 						  
 						//get http response code
 						  responsecode = httpResponseCode(new String(ch,start, length));
-						  //System.out.println("HTTP Status Code: " + responsecode);
-						  Reporter.log("Http Status Code: " + responsecode );
+						  System.out.println("HTTP Status Code: " + responsecode);
+						  Reporter.log("Http Status Code: " + responsecode);
 						  
 						  // run against firefox
 						  firefox.get(new String(ch,start, length));
-						  //System.out.println("Firefox Browser: " + firefox.getTitle());
+						  System.out.println("Firefox Browser: " + firefox.getTitle());
 						  Reporter.log("Firefox Browser: " + firefox.getTitle());
 						  
 						  //get http response code
 						  responsecode = httpResponseCode(new String(ch,start, length));
-						  //System.out.println("HTTP Status Code: " + responsecode);
-						  Reporter.log("Http Status Code: " + responsecode );
+						  System.out.println("HTTP Status Code: " + responsecode);
+						  Reporter.log("Http Status Code: " + responsecode);
 						  
 						  
 						  desc = false;
